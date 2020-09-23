@@ -3,7 +3,6 @@
 public class obstacleSpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
-
     public GameObject obstaclePrefab;
 
     // Start is called before the first frame update
@@ -40,6 +39,5 @@ public class obstacleSpawner : MonoBehaviour
                 Instantiate(obstaclePrefab, spawnPoints[i].position, Quaternion.identity);
             }
         }
-
     }
 }

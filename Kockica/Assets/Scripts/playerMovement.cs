@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-
     public Rigidbody rb;
-
     public float forwardForce = 1000;
     public float sideForce = 2500;
 
