@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GoAgain()
+    {
+        StartCoroutine( RestartLevel() );
+    }
+
     IEnumerator RestartLevel()
     {
         Time.timeScale = 1f / slowTime;
