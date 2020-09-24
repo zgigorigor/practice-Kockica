@@ -1,15 +1,27 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    bool gameEnded = false;
     float slowTime = 10f;
+
+    public GameObject completeLevelUI;
+
+    public void CompleteLevel()
+    {
+        completeLevelUI.SetActive( true );
+        Debug.Log( "level completed" );
+    }
     public void EndGame()
     {
-        Debug.Log("Game Over!");
-        StartCoroutine( RestartLevel() );
+        if ( gameEnded == false )
+        {
+            gameEnded = true;
+            Debug.Log( "Game Over!" );
+            StartCoroutine( RestartLevel() );
+        }
     }
 
     IEnumerator RestartLevel()
@@ -17,7 +29,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f / slowTime;
         Time.fixedDeltaTime = Time.fixedDeltaTime / slowTime;
 
-        yield return new WaitForSeconds(1f / slowTime);
+        yield return new WaitForSeconds( 1f / slowTime );
 
         Time.timeScale = 1f;
         Time.fixedDeltaTime = Time.fixedDeltaTime * slowTime;
