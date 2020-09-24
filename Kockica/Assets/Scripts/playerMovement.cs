@@ -5,8 +5,17 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public Rigidbody rb;
-    public float forwardForce = 1000;
-    public float sideForce = 2500;
+    //public float forwardForce = 1000;
+    //public float sideForce = 2500;
+    private float forwardForce;
+    private float sideForce;
+
+    void Start()
+    {
+        forwardForce = FindObjectOfType<GameManager>().speed;
+        sideForce = FindObjectOfType<GameManager>().force;
+    }
+
 
     // Update is called once per frame
     void FixedUpdate()

@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     bool gameEnded = false;
     float slowTime = 10f;
-
     public GameObject completeLevelUI;
+    public int lives = 3;
+    public float speed = 1000;
+    public float force = 2500;
 
     public void CompleteLevel()
     {
