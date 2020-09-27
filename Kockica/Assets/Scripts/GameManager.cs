@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,16 +23,22 @@ public class GameManager : MonoBehaviour
         {
             gameEnded = true;
             Debug.Log( "Game Over!" );
-            StartCoroutine( RestartLevel() );
+            StartCoroutine( SlowMotionRestartLevel() );
         }
     }
 
-    public void GoAgain()
+    public void Restart()
     {
         StartCoroutine( RestartLevel() );
     }
 
     IEnumerator RestartLevel()
+    {
+        yield return new WaitForSeconds( 1f );
+        SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
+    }
+
+    IEnumerator SlowMotionRestartLevel()
     {
         Time.timeScale = 1f / slowTime;
         Time.fixedDeltaTime = Time.fixedDeltaTime / slowTime;

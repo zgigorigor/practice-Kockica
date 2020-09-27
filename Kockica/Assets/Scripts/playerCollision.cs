@@ -7,10 +7,17 @@ public class playerCollision : MonoBehaviour
     {
         if(collisionInfo.collider.tag == "Obstacle")
         {
-            Debug.Log("obstacle hit");
+            Debug.Log("Obstacle hit!");
             movement.enabled = false;
-            //FindObjectOfType<GameManager>().EndGame();
+            // TODO:
+            // pauzirat igru, da se ne mice player
             FindObjectOfType<ScoreManager>().LoseLife();
+            RestartLevel();
         }
+    }
+
+    private void RestartLevel()
+    {
+        FindObjectOfType<GameManager>().Restart();
     }
 }

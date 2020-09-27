@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -16,21 +17,34 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //CheckLives();
         scoreText.text = ( player.position.z.ToString("0") + " m" );
         livesText.text = ( lives.ToString() );
     }
 
-    public void LoseLife( int l = 1 )
+    private void CheckLives()
     {
-        lives -= l;
         if ( lives <= 0 )
         {
+            Debug.Log( "Game Over! All lives lost..." );
             FindObjectOfType<GameManager>().EndGame();
         }
         else
         {
-            FindObjectOfType<GameManager>().GoAgain();
+            Debug.Log( "Remaining lives: " + lives );
+            //FindObjectOfType<GameManager>().GoAgain();
         }
+    }
 
+    public int GainLife( int l = 1 )
+    {
+        lives += l;
+        return lives;
+    }
+
+    public int LoseLife( int l = 1 )
+    {
+        lives -= l;
+        return lives;
     }
 }
