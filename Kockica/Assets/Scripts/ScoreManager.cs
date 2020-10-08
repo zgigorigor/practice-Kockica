@@ -11,13 +11,13 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        lives = FindObjectOfType<GameManager>().lives;
+        lives = GameManager.lives;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //CheckLives();
+        CheckLives();
         scoreText.text = ( player.position.z.ToString("0") + " m" );
         livesText.text = ( lives.ToString() );
     }

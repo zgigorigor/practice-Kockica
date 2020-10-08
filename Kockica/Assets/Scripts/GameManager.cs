@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     bool gameEnded = false;
     float slowTime = 10f;
     public GameObject completeLevelUI;
-    public int lives = 3;
+    public static int lives = 3;
     public float speed = 1000;
     public float force = 2500;
 
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         StartCoroutine( RestartLevel() );
+        lives -= 1;
     }
 
     IEnumerator RestartLevel()
